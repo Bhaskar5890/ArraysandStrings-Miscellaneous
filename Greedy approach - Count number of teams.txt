@@ -1,0 +1,38 @@
+public class Solution {
+    public int NumTeams(int[] rating) 
+    {
+        var res = 0;
+        for(int i = 1; i < rating.Length -1; i++)
+        {
+            int[] left = new int[2], right = new int[2];
+            for(int j = 0; j < rating.Length; j++)
+            {
+                if(j < i)
+                {
+                  if(rating[j] < rating[i])
+                  {
+                    left[0]++;
+                  }
+                  else
+                  {
+                    left[1]++;
+                  }
+                }
+                
+                if(j > i)
+                {
+                  if(rating[j] > rating[i])
+                  {
+                    right[0]++;
+                  }
+                  else
+                  {
+                    right[1]++;
+                  }
+                }
+            }
+            res+= left[0] * right[0] + left[1] * right[1];
+        }
+        return res;
+    }
+}
